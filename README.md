@@ -59,6 +59,12 @@ This confusion is resolved when a fixed window is used across the entire dataset
   <figcaption><b>Figure 3:</b> Fixed Window</figcaption>
 </figure>
 
+For real-time applications, we may expand the window size over time as the agents collect more data. Figure 3 shows this results in progressively more confident neighbour identfication.
 
+<figure style="text-align:center;">
+  <img src="visualization/ahead_g.png" width="40%">
+  <img src="visualization/behind_g.png" width="40%">
+  <figcaption><b>Figure 3:</b> Expanding Window</figcaption>
+</figure>
 
 

@@ -16,9 +16,10 @@ import matplotlib.pyplot as plt
 
 # configs
 eps             = 1e-9
-macro_window    = 100
-moving          = True
-window          = [0.75, 1.0] 
+window_mode     = 'fixed'   # 'fixed' (full dataset), sliding', 'gathering' 
+outer_window_0  = 100           # sweeps across dataset (initial)
+inner_window    = [0.25, 1.0]   # within the outer window, we may further window
+max_gather      = 1000          # we can cap the window (for 'gather')
 w_pers          = 1.0           # weight of persistence
 w_vari          = 1.0           # wright of variability
 
@@ -53,9 +54,9 @@ def infer_consistent_neighbours(traj, proximity_history):
     nSamples, _, _ = traj.shape
     
     # find the edges of the window and clamp
-    left    = int(np.floor(window[0]*nSamples))
+    left    = int(np.floor(inner_window[0]*nSamples))
     left    = max(0, min(left, nSamples-1))
-    right   = int(np.floor(window[1]*nSamples))
+    right   = int(np.floor(inner_window[1]*nSamples))
     right   = max(left+1, min(right, nSamples))
 
     window_stack = np.stack(proximity_history[left:right], axis=0)
@@ -127,7 +128,7 @@ def compute_neighbourhoods(states_all):
 
     proximity_history = build_proximity_history(states_all)
     
-    if not moving:
+    if window_mode == 'fixed' :
         
         consistent_ahead, consistent_behind = infer_consistent_neighbours(states_all, proximity_history)
         
@@ -136,15 +137,22 @@ def compute_neighbourhoods(states_all):
                     
     else:
         
+        # start with initial value
+        outer_window = outer_window_0
+        
         # for each timestep
         for t in range(nSamples):
             
             # ensure we have enough samples
-            if t < macro_window:
+            if t + 1 < outer_window_0:
                 continue
+            
+            # we can grow this outer window if gather data along the way
+            if window_mode == 'gathering':
+                outer_window = max(outer_window_0, min(t + 1, max_gather))
 
             # define start and end of data
-            start   = t - macro_window + 1
+            start   = max(0, t - outer_window + 1)
             end     = t + 1
             
             # grab subset of data and the proximity history
@@ -192,6 +200,7 @@ def plot_neighbor_timelines(ahead_idx, behind_idx, title_prefix=""):
     plt.show()
     
 #%% test
+
 import data.data_manager as dm
 import os
 
@@ -213,7 +222,7 @@ ahead_idx, behind_idx       = compute_neighbourhoods(states_all)
 
 # plot
 plot_neighbor_timelines(ahead_idx, behind_idx, title_prefix='')
-       
+        
         
         
         
