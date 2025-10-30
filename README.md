@@ -11,9 +11,21 @@ This program implements an algorithm for finding consistent neighbouring agents 
 
 Our approach relies on a weighted score of consistency, persistence, and variability of the relative distance between agents over a time window. We define position and velocity vectors for each agent $i$ at timestep $t$:
 
-$\mathbf{p}_i(t) = \begin{bmatrix} x_i(t) \\ y_i(t) \\ z_i(t) \end{bmatrix}$
-, 
-$\mathbf{v}_i(t) = \begin{bmatrix} \dot{x}_i(t) \\ \dot{y}_i(t) \\ \dot{z}_i(t) \end{bmatrix}$
+$$
+\mathbf{p}_i(t) =
+\begin{bmatrix}
+x_i(t) \\
+y_i(t) \\
+z_i(t)
+\end{bmatrix},
+\qquad
+\mathbf{v}_i(t) =
+\begin{bmatrix}
+\dot{x}_i(t) \\
+\dot{y}_i(t) \\
+\dot{z}_i(t)
+\end{bmatrix}
+$$
 
 and the unit velocity direction:
 
