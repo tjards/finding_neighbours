@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 # configs
 eps             = 1e-9
 macro_window    = 100
-moving          = False
+moving          = True
 window          = [0.75, 1.0] 
 w_pers          = 1.0           # weight of persistence
 w_vari          = 1.0           # wright of variability
