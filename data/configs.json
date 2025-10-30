@@ -1,0 +1,82 @@
+{
+    "simulation": {
+        "Ti": 0,
+        "Tf": 300,
+        "Ts": 0.02,
+        "dimens": 3,
+        "verbose": 1,
+        "system": "swarm",
+        "strategy": "lemni"
+    },
+    "circle": {
+        "c1_d": 2,
+        "c2_d": 2.8284271247461903,
+        "r_max": 50,
+        "r_desired": 5,
+        "phi_dot_d": 0.05,
+        "ref_plane": "horizontal",
+        "quat_0": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    },
+    "lemni": {
+        "c1_d": 1,
+        "c2_d": 2.0,
+        "learning": null
+    },
+    "saber": {
+        "a": 5,
+        "b": 5,
+        "c": 0.0,
+        "eps": 0.1,
+        "h": 0.2,
+        "pi": 3.141592653589793,
+        "c1_a": 1,
+        "c2_a": 2.0,
+        "c1_b": 0,
+        "c2_b": 0.0,
+        "c1_g": 2,
+        "c2_g": 4.47213595499958,
+        "d": 10,
+        "d_prime": 6.0,
+        "r": 13.0,
+        "r_prime": 7.800000000000001
+    },
+    "orchestrator": {
+        "pin_update_rate": 10,
+        "pin_selection_method": "nopins",
+        "criteria_table": {
+            "radius": true,
+            "aperature": false
+        },
+        "sensor_aperature": 140,
+        "learning_ctrl": null
+    },
+    "agents": {
+        "nAgents": 7,
+        "rAgents": 0.5,
+        "initial_spread": 20,
+        "dynamics": "double integrator",
+        "tactic_type": "lemni"
+    },
+    "targets": {
+        "tSpeed": 0,
+        "initial_target_positions": [
+            0.0,
+            0.0,
+            15.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    },
+    "obstacles": {
+        "nObs": 1,
+        "nWalls": 1,
+        "oSpread": 20,
+        "vehObs": 0
+    }
+}
