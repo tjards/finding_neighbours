@@ -29,15 +29,15 @@ $$
 
 and the unit velocity direction:
 
-$\hat{\mathbf{u}}_i(t) = \frac{\mathbf{v}_i(t)}{\|\mathbf{v}_i(t)\| + \varepsilon}$
+$$\hat{\mathbf{u}}_i(t) = \frac{\mathbf{v}_i(t)}{\|\mathbf{v}_i(t)\| + \varepsilon}$$
 
  We compute the relative distance matrix:
 
-$\mathbf{D}_{ij}(t) = \mathbf{p}_j(t) - \mathbf{p}_i(t)$
+$$\mathbf{D}_{ij}(t) = \mathbf{p}_j(t) - \mathbf{p}_i(t)$$
 
 The offset matrix measures how far each neighbouring agent lies along the forward or backward direction of motion:
 
-$O_{ij}(t) = \mathbf{D}_{ij}(t) \cdot \hat{\mathbf{u}}_i(t)$
+$$O_{ij}(t) = \mathbf{D}_{ij}(t) \cdot \hat{\mathbf{u}}_i(t)$$
 
 That is, the distance from agent $i$ to agent $j$ projected onto $i$’s heading direction. We then compute a score for each neighbour (within the prescribed window) based on the consistency, persistence, and variability of this offset over time. We select the highest scoring neighbours as the true ahead or behind agents.
 
