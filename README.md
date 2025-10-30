@@ -46,16 +46,16 @@ That is, the distance from agent $i$ to agent $j$ projected onto $i$’s heading
 Figure 2 show the results for a tight, sliding window of 100 timesteps. Here we see consistency across most of the dataset, with some confusion around the intersection at the center of the swarm. 
 
 <figure style="text-align:center;">
-  <img src="visualization/ahead_T.png" width="30%">
-  <img src="visualization/behind_T.png" width="30%">
+  <img src="visualization/ahead_T.png" width="40%">
+  <img src="visualization/behind_T.png" width="40%">
   <figcaption><b>Figure 2:</b> Sliding Window</figcaption>
 </figure>
 
 This confusion is resolved when a fixed window is used across the entire dataset. This demonstrates the effectiveness of our approach in identifying true neighbouring agents in complex trajectories.
 
 <figure style="text-align:center;">
-  <img src="visualization/ahead_F.png" width="30%">
-  <img src="visualization/behind_F.png" width="30%">
+  <img src="visualization/ahead_F.png" width="40%">
+  <img src="visualization/behind_F.png" width="40%">
   <figcaption><b>Figure 3:</b> Fixed Window</figcaption>
 </figure>
 
